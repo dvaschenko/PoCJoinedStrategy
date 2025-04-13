@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="PoCJoined">
+        <createTable tableName="CONTRACT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CONTRACT"/>
+            </column>
+            <column name="NUMBER_" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATE_OF_CONCLUSION" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COUNTERPARTY_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COUNTERPARTY_TYPE" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="PoCJoined">
+        <createTable tableName="COUNTERPARTY">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_COUNTERPARTY"/>
+            </column>
+            <column name="DTYPE" type="VARCHAR(31)"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="timestamp with time zone"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="timestamp with time zone"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="PoCJoined">
+        <createTable tableName="LEGAL_CP">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_LEGAL_CP"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TAX_PAYER_NUMBER" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="PoCJoined">
+        <createTable tableName="PHYSICAL_CP">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PHYSICAL_CP"/>
+            </column>
+            <column name="FIRST_NAME" type="VARCHAR(255)"/>
+            <column name="LAST_NAME" type="VARCHAR(255)"/>
+            <column name="PATRONYMIC_NAME" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="PoCJoined">
+        <addForeignKeyConstraint baseColumnNames="COUNTERPARTY_ID" baseTableName="CONTRACT"
+                                 constraintName="FK_CONTRACT_ON_COUNTERPARTY" referencedColumnNames="ID"
+                                 referencedTableName="COUNTERPARTY"/>
+    </changeSet>
+    <changeSet id="6" author="PoCJoined">
+        <addForeignKeyConstraint baseColumnNames="ID" baseTableName="LEGAL_CP" constraintName="FK_LEGAL_CP_ON_ID"
+                                 referencedColumnNames="ID" referencedTableName="COUNTERPARTY"/>
+    </changeSet>
+    <changeSet id="7" author="PoCJoined">
+        <addForeignKeyConstraint baseColumnNames="ID" baseTableName="PHYSICAL_CP" constraintName="FK_PHYSICAL_CP_ON_ID"
+                                 referencedColumnNames="ID" referencedTableName="COUNTERPARTY"/>
+    </changeSet>
+</databaseChangeLog>

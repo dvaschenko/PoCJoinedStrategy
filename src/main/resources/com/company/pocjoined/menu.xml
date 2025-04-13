@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/flowui/menu">
+
+    <menu id="application" title="msg://com.company.pocjoined/menu.application.title" opened="true">
+        <item view="User.list" title="msg://com.company.pocjoined.view.user/UserListView.title"/>
+        <item view="PhysicalCP.list" title="msg://com.company.pocjoined.view.physicalcp/physicalCPListView.title"/>
+        <item view="LegalCP.list" title="msg://com.company.pocjoined.view.legalcp/legalCPListView.title"/>
+        <item view="Contract.list" title="msg://com.company.pocjoined.view.contract/contractListView.title"/>
+    </menu>
+
+</menu-config>
