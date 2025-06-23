@@ -6,6 +6,8 @@
         <item view="PhysicalCP.list" title="msg://com.company.pocjoined.view.physicalcp/physicalCPListView.title"/>
         <item view="LegalCP.list" title="msg://com.company.pocjoined.view.legalcp/legalCPListView.title"/>
         <item view="Contract.list" title="msg://com.company.pocjoined.view.contract/contractListView.title"/>
+        <item view="Counterparty.list"
+              title="msg://com.company.pocjoined.view.counterparty/counterpartyListView.title"/>
     </menu>
 
 </menu-config>
